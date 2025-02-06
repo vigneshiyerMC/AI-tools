@@ -100,8 +100,8 @@ async def run_agent_with_streaming(user_input: str):
 
 
 async def main():
-    st.title("Library Documentation Agent")
-    st.write("Ask any question about UI libraries, the hidden truths of the beauty of this framework lie within.")
+    st.title("Library Documentation Assistant")
+    st.write("Ask any question about libraries/packages used in your project, the hidden truths of the beauty of this framework lie within.")
 
     # Initialize chat history in session state if not present
     if "messages" not in st.session_state:
