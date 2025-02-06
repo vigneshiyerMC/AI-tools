@@ -1,8 +1,6 @@
 from __future__ import annotations
 from typing import Literal, TypedDict
 import asyncio
-import os
-
 import streamlit as st
 import json
 import logfire
@@ -24,14 +22,11 @@ from pydantic_ai.messages import (
 )
 from pydantic_ai_expert import pydantic_ai_expert, PydanticAIDeps
 
-# Load environment variables
-from dotenv import load_dotenv
-load_dotenv()
-
-openai_client = AsyncOpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+# Replace environment loading with Streamlit secrets
+openai_client = AsyncOpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 supabase: Client = Client(
-    os.getenv("SUPABASE_URL"),
-    os.getenv("SUPABASE_SERVICE_KEY")
+    st.secrets["SUPABASE_URL"],
+    st.secrets["SUPABASE_SERVICE_KEY"]
 )
 
 # Configure logfire to suppress warnings (optional)
@@ -121,7 +116,7 @@ async def main():
                 display_message_part(part)
 
     # Chat input for the user
-    user_input = st.chat_input("What questions do you have about ReactJS?")
+    user_input = st.chat_input("What questions do you have about Redux toolkit?")
 
     if user_input:
         # We append a new request to the conversation explicitly

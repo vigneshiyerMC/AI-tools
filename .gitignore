@@ -1,2 +1,5 @@
 backup_chunks
-.env
+.env.local
+
+# Streamlit secrets
+.streamlit/secrets.toml
