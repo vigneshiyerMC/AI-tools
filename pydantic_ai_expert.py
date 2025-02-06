@@ -12,9 +12,12 @@ from openai import AsyncOpenAI
 from supabase import Client
 from typing import List
 
-# Replace environment variables with Streamlit secrets
+# Replace environment variables with Streamlit secrets and initialize OpenAI model with API key
 llm = st.secrets.get('LLM_MODEL', 'gpt-4o-mini')
-model = OpenAIModel(llm)
+model = OpenAIModel(
+    llm,
+    api_key=st.secrets["OPENAI_API_KEY"]
+)
 
 logfire.configure(send_to_logfire='if-token-present')
 
